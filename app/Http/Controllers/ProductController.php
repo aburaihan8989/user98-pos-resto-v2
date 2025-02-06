@@ -59,9 +59,30 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        // $data = $request->all();
+        // $product = \App\Models\Product::findOrFail($id);
+        // $product->update($data);
+        $request->validate([
+            'name' => 'required|min:3',
+            'price' => 'required|integer',
+            'stock' => 'required|integer',
+            'category' => 'required|in:food,drink,snack',
+            'image' => 'required|image|mimes:png,jpg,jpeg'
+        ]);
+
+        $filename = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/products', $filename);
         $data = $request->all();
+
+        // $product = new \App\Models\Product;
         $product = \App\Models\Product::findOrFail($id);
-        $product->update($data);
+        $product->name = $request->name;
+        $product->price = (int) $request->price;
+        $product->stock = (int) $request->stock;
+        $product->category = $request->category;
+        $product->image = $filename;
+        $product->update();
+
         return redirect()->route('product.index')->with('success', 'Product successfully updated');
     }
 
