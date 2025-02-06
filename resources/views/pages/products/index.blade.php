@@ -40,14 +40,14 @@
                                 <h4>All Products</h4>
                             </div>
                             <div class="card-body">
-                                <div class="float-left">
+                                {{-- <div class="float-left">
                                     <select class="form-control selectric">
                                         <option>Action For Selected</option>
                                         <option>Move to Draft</option>
                                         <option>Move to Pending</option>
                                         <option>Delete Pemanently</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('product.index') }}">
                                         <div class="input-group">
@@ -81,7 +81,7 @@
                                                     {{ $product->category }}
                                                 </td>
                                                 <td>
-                                                    {{ $product->price }}
+                                                    Rp. {{ number_format(($product->price), 0, ",", ".") }}
                                                 </td>
                                                 <td>
                                                     @if ($product->image)
