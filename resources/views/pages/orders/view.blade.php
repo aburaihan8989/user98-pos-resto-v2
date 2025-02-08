@@ -27,7 +27,7 @@
                 </div>
                 <h2 class="section-title">Order Detail</h2>
                 <p class="section-lead">
-                <div>Total Price : {{ $order->total_price }}</div>
+                <div>Total Price : Rp. {{ number_format(($order->total_price), 0, ",", ".") }}</div>
                 <div>Transaction Time : {{ $order->transaction_time }}</div>
                 <div>Total Item : {{ $order->total_item }}</div>
 

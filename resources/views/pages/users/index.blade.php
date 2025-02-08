@@ -16,8 +16,8 @@
                     <a href="{{ route('user.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Users</a></div>
+                    <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item"><a href="{{ route('user.index') }}">Users</a></div>
                     <div class="breadcrumb-item">All Users</div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
 
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>
-                                                    <div class="d-flex justify-content-center">
+                                                    <div class="d-flex">
                                                         <a href='{{ route('user.edit', $user->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
