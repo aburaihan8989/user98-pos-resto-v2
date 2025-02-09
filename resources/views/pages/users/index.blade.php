@@ -32,7 +32,6 @@
                     You can manage all Users, such as editing, deleting and more.
                 </p>
 
-
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
@@ -64,23 +63,27 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-
+                                            <th>No</th>
                                             <th>Name</th>
                                             <th>Email</th>
-
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
+                                        <?php $no = 1; ?>
                                         @foreach ($users as $user)
                                             <tr>
-
-                                                <td>{{ $user->name }}
+                                                <td>
+                                                    {{ $no }}
+                                                </td>
+                                                <td>
+                                                    {{ $user->name }}
                                                 </td>
                                                 <td>
                                                     {{ $user->email }}
                                                 </td>
-
-                                                <td>{{ $user->created_at }}</td>
+                                                <td>
+                                                    {{ $user->created_at }}
+                                                </td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href='{{ route('user.edit', $user->id) }}'
@@ -89,21 +92,21 @@
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST"
+                                                        <form action="#">
+                                                        {{-- <form action="{{ route('user.destroy', $user->id) }}" method="POST"
                                                             class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                                value="{{ csrf_token() }}" /> --}}
+                                                            <button class="btn btn-sm btn-secondary btn-icon confirm-delete ml-2">
                                                                 <i class="fas fa-times"></i> Delete
                                                             </button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php $no++; ?>
                                         @endforeach
-
-
                                     </table>
                                 </div>
                                 <div class="float-right">
