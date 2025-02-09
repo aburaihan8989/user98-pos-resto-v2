@@ -30,6 +30,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|min:3|unique:products',
+            'cost_price' => 'required|integer',
             'price' => 'required|integer',
             'stock' => 'required|integer',
             'category' => 'required|in:food,drink,snack',
@@ -42,6 +43,7 @@ class ProductController extends Controller
 
         $product = new \App\Models\Product;
         $product->name = $request->name;
+        $product->cost_price = (int) $request->cost_price;
         $product->price = (int) $request->price;
         $product->stock = (int) $request->stock;
         $product->category = $request->category;
@@ -64,24 +66,39 @@ class ProductController extends Controller
         // $product->update($data);
         $request->validate([
             'name' => 'required|min:3',
+            'cost_price' => 'required|integer',
             'price' => 'required|integer',
             'stock' => 'required|integer',
             'category' => 'required|in:food,drink,snack',
-            'image' => 'required|image|mimes:png,jpg,jpeg'
+            // 'image' => 'required|image|mimes:png,jpg,jpeg'
         ]);
 
-        $filename = time() . '.' . $request->image->extension();
-        $request->image->storeAs('public/products', $filename);
-        $data = $request->all();
+        if ($request->has('image')) {
+            $filename = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/products', $filename);
+            $data = $request->all();
 
-        // $product = new \App\Models\Product;
-        $product = \App\Models\Product::findOrFail($id);
-        $product->name = $request->name;
-        $product->price = (int) $request->price;
-        $product->stock = (int) $request->stock;
-        $product->category = $request->category;
-        $product->image = $filename;
-        $product->update();
+            // $product = new \App\Models\Product;
+            $product = \App\Models\Product::findOrFail($id);
+            $product->name = $request->name;
+            $product->cost_price = (int) $request->cost_price;
+            $product->price = (int) $request->price;
+            $product->stock = (int) $request->stock;
+            $product->category = $request->category;
+            $product->image = $filename;
+            $product->update();
+        } else {
+            $data = $request->all();
+
+            // $product = new \App\Models\Product;
+            $product = \App\Models\Product::findOrFail($id);
+            $product->name = $request->name;
+            $product->cost_price = (int) $request->cost_price;
+            $product->price = (int) $request->price;
+            $product->stock = (int) $request->stock;
+            $product->category = $request->category;
+            $product->update();
+            }
 
         return redirect()->route('product.index')->with('success', 'Product successfully updated');
     }
