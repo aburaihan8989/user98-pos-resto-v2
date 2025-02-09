@@ -32,7 +32,6 @@
                     You can manage all Products, such as editing, deleting and more.
                 </p>
 
-
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
@@ -64,21 +63,36 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-
+                                            <th>No</th>
                                             <th>Name</th>
                                             <th>Category</th>
-                                            <th>Price</th>
+                                            <th>Cost Price</th>
+                                            <th>Sell Price</th>
                                             <th>Photo</th>
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
+                                        <?php $no = 1; ?>
                                         @foreach ($products as $product)
                                             <tr>
-
-                                                <td>{{ $product->name }}
+                                                <td>
+                                                    {{ $no }}
                                                 </td>
                                                 <td>
-                                                    {{ $product->category }}
+                                                    {{ $product->name }}
+                                                </td>
+                                                <td>
+                                                    {{-- {{ $product->category }} --}}
+                                                    @if ($product->category == 'food')
+                                                        Food
+                                                    @elseif ($product->category == 'drink')
+                                                        Drink
+                                                    @elseif ($product->category == 'snack')
+                                                        Snack
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    Rp. {{ number_format(($product->cost_price), 0, ",", ".") }}
                                                 </td>
                                                 <td>
                                                     Rp. {{ number_format(($product->price), 0, ",", ".") }}
@@ -89,34 +103,34 @@
                                                             width="100px" class="img-thumbnail">
                                                             @else
                                                             <span class="badge badge-danger">No Image</span>
-
                                                     @endif
-
                                                 </td>
-                                                <td>{{ $product->created_at }}</td>
                                                 <td>
-                                                    <div class="d-flex justify-content-center">
+                                                    {{ $product->created_at }}
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex">
                                                         <a href='{{ route('product.edit', $product->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('product.destroy', $product->id) }}"
-                                                            method="POST" class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
+                                                        <form action="#">
+                                                        {{-- <form action="{{ route('product.destroy', $product->id) }}"
+                                                            method="POST" class="ml-2"> --}}
+                                                            {{-- <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                                value="{{ csrf_token() }}" /> --}}
+                                                            <button class="btn btn-sm btn-secondary btn-icon confirm-delete ml-2">
                                                                 <i class="fas fa-times"></i> Delete
                                                             </button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php $no++; ?>
                                         @endforeach
-
-
                                     </table>
                                 </div>
                                 <div class="float-right">

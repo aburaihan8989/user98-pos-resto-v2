@@ -27,8 +27,6 @@
                 </div>
                 <h2 class="section-title">Orders</h2>
 
-
-
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
@@ -53,16 +51,19 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-
+                                            <th>No</th>
                                             <th>Transaction Time</th>
                                             <th>Total Price</th>
                                             <th>Total Item</th>
                                             <th>Payment Method</th>
                                             <th>Nama Kasir</th>
                                         </tr>
+                                        <?php $no = 1; ?>
                                         @foreach ($orders as $order)
                                             <tr>
-
+                                                <td>
+                                                    {{ $no }}
+                                                </td>
                                                 <td>
                                                     <a href="{{ route('order.show', $order->id) }}">{{ $order->transaction_time }}</a>
                                                 </td>
@@ -77,13 +78,10 @@
                                                 </td>
                                                 <td>
                                                     {{ $order->kasir->name }}
-
                                                 </td>
-
                                             </tr>
+                                            <?php $no++; ?>
                                         @endforeach
-
-
                                     </table>
                                 </div>
                                 <div class="float-right">

@@ -33,7 +33,6 @@
 
                 </p>
 
-
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
@@ -41,25 +40,24 @@
                                 <h4>All Products</h4>
                             </div>
                             <div class="card-body">
-
-
-
                                 <div class="clearfix mb-3"></div>
-
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-
+                                            <th>No</th>
                                             <th>Product Name</th>
                                             <th>Item Price</th>
                                             <th>Quantity</th>
                                             <th>Total Price</th>
-
                                         </tr>
+                                        <?php $no = 1; ?>
                                         @foreach ($orderItems as $item)
                                             <tr>
-
-                                                <td>{{ $item->product->name }}</td>
+                                                <td>
+                                                    {{ $no }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->product->name }}
                                                 </td>
                                                 <td>
                                                     Rp. {{ number_format(($item->product->price), 0, ",", ".") }}
@@ -69,16 +67,12 @@
                                                 </td>
                                                 <td>
                                                     Rp. {{ number_format(($item->quantity * $item->total_price), 0, ",", ".") }}
-
                                                 </td>
-
                                             </tr>
+                                            <?php $no++; ?>
                                         @endforeach
-
-
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>

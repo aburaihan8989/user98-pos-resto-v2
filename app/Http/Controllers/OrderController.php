@@ -22,7 +22,6 @@ class OrderController extends Controller
         //get order items by order id
         $orderItems = \App\Models\OrderItem::with('product')->where('order_id', $id)->get();
 
-
         return view('pages.orders.view', compact('order', 'orderItems'));
     }
 }

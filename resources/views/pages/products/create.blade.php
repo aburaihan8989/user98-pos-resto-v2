@@ -50,7 +50,20 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Price</label>
+                                <label>Cost Price</label>
+                                <input type="number"
+                                    class="form-control @error('cost_price')
+                                is-invalid
+                            @enderror"
+                                    name="cost_price">
+                                @error('cost_price')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Sell Price</label>
                                 <input type="number"
                                     class="form-control @error('price')
                                 is-invalid
