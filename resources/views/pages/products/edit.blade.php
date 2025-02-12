@@ -105,7 +105,7 @@
                                     <label class="selectgroup-item">
                                         <input type="radio" name="category" value="snack" class="selectgroup-input"
                                             @if ($product->category == 'snack') checked @endif>
-                                        <span class="selectgroup-button">Snack</span>
+                                        <span class="selectgroup-button">Other</span>
                                     </label>
                                 </div>
                             </div>
