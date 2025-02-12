@@ -62,7 +62,7 @@
                                         @foreach ($orders as $order)
                                             <tr>
                                                 <td>
-                                                    {{ $no }}
+                                                    {{ $loop->iteration + $orders->firstItem() - 1 }}
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('order.show', $order->id) }}">{{ $order->transaction_time }}</a>

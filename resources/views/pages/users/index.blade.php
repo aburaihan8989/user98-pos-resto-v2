@@ -73,7 +73,7 @@
                                         @foreach ($users as $user)
                                             <tr>
                                                 <td>
-                                                    {{ $no }}
+                                                    {{ $loop->iteration + $users->firstItem() - 1 }}
                                                 </td>
                                                 <td>
                                                     {{ $user->name }}

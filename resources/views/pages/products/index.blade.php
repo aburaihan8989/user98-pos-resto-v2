@@ -76,7 +76,7 @@
                                         @foreach ($products as $product)
                                             <tr>
                                                 <td>
-                                                    {{ $no }}
+                                                    {{ $loop->iteration + $products->firstItem() - 1 }}
                                                 </td>
                                                 <td>
                                                     {{ $product->name }}
