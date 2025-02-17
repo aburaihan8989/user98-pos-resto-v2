@@ -87,7 +87,7 @@
                                                         Food
                                                     @elseif ($product->category == 'drink')
                                                         Drink
-                                                    @elseif ($product->category == 'snack')
+                                                    @elseif ($product->category == 'other')
                                                         Other
                                                     @endif
                                                 </td>

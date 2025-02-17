@@ -32,7 +32,7 @@ class ProductController extends Controller
             'name' => 'required|min:3|unique:products',
             'cost_price' => 'required|integer',
             'price' => 'required|integer',
-            'stock' => 'required|integer',
+            // 'stock' => 'required|integer',
             'category' => 'required|in:food,drink,snack',
             'image' => 'required|image|mimes:png,jpg,jpeg'
         ]);
@@ -45,7 +45,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->cost_price = (int) $request->cost_price;
         $product->price = (int) $request->price;
-        $product->stock = (int) $request->stock;
+        // $product->stock = (int) $request->stock;
         $product->category = $request->category;
         $product->image = $filename;
         $product->save();
@@ -68,7 +68,7 @@ class ProductController extends Controller
             'name' => 'required|min:3',
             'cost_price' => 'required|integer',
             'price' => 'required|integer',
-            'stock' => 'required|integer',
+            // 'stock' => 'required|integer',
             'category' => 'required|in:food,drink,snack',
             // 'image' => 'required|image|mimes:png,jpg,jpeg'
         ]);
@@ -83,7 +83,7 @@ class ProductController extends Controller
             $product->name = $request->name;
             $product->cost_price = (int) $request->cost_price;
             $product->price = (int) $request->price;
-            $product->stock = (int) $request->stock;
+            // $product->stock = (int) $request->stock;
             $product->category = $request->category;
             $product->image = $filename;
             $product->update();

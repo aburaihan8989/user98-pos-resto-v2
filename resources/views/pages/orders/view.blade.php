@@ -54,7 +54,7 @@
                                         @foreach ($orderItems as $item)
                                             <tr>
                                                 <td>
-                                                    {{ $loop->iteration + $orderItems->firstItem() - 1 }}
+                                                    {{ $loop->iteration }}
                                                 </td>
                                                 <td>
                                                     {{ $item->product->name }}

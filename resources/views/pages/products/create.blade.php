@@ -27,8 +27,6 @@
             <div class="section-body">
                 <h2 class="section-title">Product</h2>
 
-
-
                 <div class="card">
                     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -75,7 +73,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Stock</label>
                                 <input type="number"
                                     class="form-control @error('stock')
@@ -87,8 +85,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-
+                            </div> --}}
                             <div class="form-group">
                                 <label class="form-label">Category</label>
                                 <div class="selectgroup w-100">
@@ -102,12 +99,11 @@
                                         <span class="selectgroup-button">Drink</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="category" value="snack" class="selectgroup-input">
+                                        <input type="radio" name="category" value="other" class="selectgroup-input">
                                         <span class="selectgroup-button">Other</span>
                                     </label>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label>Photo Product</label>
                                 <div class="col-sm-6">
@@ -120,14 +116,12 @@
                                     </div>
                                 @enderror
                             </div>
-
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
-
             </div>
         </section>
     </div>
