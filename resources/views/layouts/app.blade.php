@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
         name="viewport">
-    <title>@yield('title') | Simple POS Management</title>
+    <title>@yield('title') | Simple POS Website Management</title>
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
     <!-- General CSS Files -->

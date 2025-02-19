@@ -13,7 +13,11 @@
             <div class="section-header">
                 <h1>Users</h1>
                 <div class="section-header-button">
-                    <a href="{{ route('user.create') }}" class="btn btn-primary">Add New</a>
+                    @if ( auth()->user()->roles == "admin" )
+                        <a href="{{ route('user.create') }}" class="btn btn-primary">Add New</a>
+                    @else
+                        <a href="#" class="btn btn-secondary">Add New</a>
+                    @endif
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
@@ -36,7 +40,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>All Posts</h4>
+                                <h4>All Users</h4>
                             </div>
                             <div class="card-body">
                                 {{-- <div class="float-left">
@@ -50,7 +54,7 @@
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('user.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" name="name">
+                                            <input type="text" class="form-control" placeholder="Search Name" name="name">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -66,6 +70,7 @@
                                             <th>No</th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Phone</th>
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
@@ -82,15 +87,26 @@
                                                     {{ $user->email }}
                                                 </td>
                                                 <td>
+                                                    {{ $user->phone }}
+                                                </td>
+                                                <td>
                                                     {{ $user->created_at }}
                                                 </td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href='{{ route('user.edit', $user->id) }}'
-                                                            class="btn btn-sm btn-info btn-icon">
-                                                            <i class="fas fa-edit"></i>
-                                                            Edit
-                                                        </a>
+                                                        @if ( auth()->user()->roles == "admin" )
+                                                            <a href='{{ route('user.edit', $user->id) }}'
+                                                                class="btn btn-sm btn-info btn-icon">
+                                                                <i class="fas fa-edit"></i>
+                                                                Edit
+                                                            </a>
+                                                        @else
+                                                            <a href='#'
+                                                                class="btn btn-sm btn-secondary btn-icon">
+                                                                <i class="fas fa-edit"></i>
+                                                                Edit
+                                                            </a>
+                                                        @endif
 
                                                         <form action="#">
                                                         {{-- <form action="{{ route('user.destroy', $user->id) }}" method="POST"

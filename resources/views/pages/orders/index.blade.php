@@ -26,6 +26,9 @@
                     </div>
                 </div>
                 <h2 class="section-title">Orders</h2>
+                <p class="section-lead">
+                    You can view all Orders, such as transaction time, amount and more.
+                </p>
 
                 <div class="row mt-4">
                     <div class="col-12">
@@ -35,16 +38,16 @@
                             </div>
                             <div class="card-body">
 
-                                {{-- <div class="float-right">
-                                    <form method="GET" action="{{ route('product.index') }}">
+                                <div class="float-right">
+                                    <form method="GET" action="{{ route('order.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" name="name">
+                                            <input type="text" class="form-control" placeholder="Search Date" name="transaction_time">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
                                         </div>
                                     </form>
-                                </div> --}}
+                                </div>
 
                                 <div class="clearfix mb-3"></div>
 
@@ -65,7 +68,7 @@
                                                     {{ $loop->iteration + $orders->firstItem() - 1 }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('order.show', $order->id) }}">{{ $order->transaction_time }}</a>
+                                                    <a href="{{ route('order.show', $order->order_id) }}">{{ $order->transaction_time }}</a>
                                                 </td>
                                                 <td>
                                                     Rp. {{ number_format(($order->total_price), 0, ",", ".") }}
@@ -77,7 +80,7 @@
                                                     {{ $order->payment_method }}
                                                 </td>
                                                 <td>
-                                                    {{ $order->kasir->name }}
+                                                    {{ $order->name }}
                                                 </td>
                                             </tr>
                                             <?php $no++; ?>

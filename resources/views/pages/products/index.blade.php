@@ -13,7 +13,11 @@
             <div class="section-header">
                 <h1>Products</h1>
                 <div class="section-header-button">
-                    <a href="{{ route('product.create') }}" class="btn btn-primary">Add New</a>
+                    @if ( auth()->user()->roles == "admin" )
+                        <a href="{{ route('product.create') }}" class="btn btn-primary">Add New</a>
+                    @else
+                        <a href="#" class="btn btn-secondary">Add New</a>
+                    @endif
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
@@ -50,7 +54,7 @@
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('product.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" name="name">
+                                            <input type="text" class="form-control" placeholder="Search Name" name="name">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -110,11 +114,19 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href='{{ route('product.edit', $product->id) }}'
-                                                            class="btn btn-sm btn-info btn-icon">
-                                                            <i class="fas fa-edit"></i>
-                                                            Edit
-                                                        </a>
+                                                        @if ( auth()->user()->roles == "admin" )
+                                                            <a href='{{ route('product.edit', $product->id) }}'
+                                                                class="btn btn-sm btn-info btn-icon">
+                                                                <i class="fas fa-edit"></i>
+                                                                Edit
+                                                            </a>
+                                                        @else
+                                                            <a href='#'
+                                                                class="btn btn-sm btn-secondary btn-icon">
+                                                                <i class="fas fa-edit"></i>
+                                                                Edit
+                                                            </a>
+                                                        @endif
 
                                                         <form action="#">
                                                         {{-- <form action="{{ route('product.destroy', $product->id) }}"

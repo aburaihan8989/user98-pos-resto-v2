@@ -12,7 +12,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Dashboard - Simple POS Management</h1>
+                <h1>Dashboard - Simple POS Website Management</h1>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -40,7 +40,7 @@
                                 <h4>Total Transaksi</h4>
                             </div>
                             <div class="card-body">
-                                {{ $total_count }}
+                                {{ $total_count }} Transaksi
                             </div>
                         </div>
                     </div>
@@ -52,10 +52,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Pengeluaran</h4>
+                                <h4>Total Biaya</h4>
                             </div>
                             <div class="card-body">
-                                Rp. 0
+                                Rp. {{ number_format(($total_cost), 0, ",", ".") }}
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,69 @@
                                 <h4>Total Keuntungan</h4>
                             </div>
                             <div class="card-body">
-                                Rp. {{ number_format(($total_sales-0), 0, ",", ".") }}
+                                Rp. {{ number_format(($total_profit), 0, ",", ".") }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-info">
+                            <i class="fas fa-cash-register"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Penjualan Hari Ini</h4>
+                            </div>
+                            <div class="card-body">
+                                Rp. {{ number_format($sales_today, 0, ",", ".") }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-warning">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Transaksi Hari Ini</h4>
+                            </div>
+                            <div class="card-body">
+                                {{ $count_today }} Transaksi
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-info">
+                            <i class="fas fa-cash-register"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Penjualan Hari Kemarin</h4>
+                            </div>
+                            <div class="card-body">
+                                Rp. {{ number_format($sales_before, 0, ",", ".") }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-warning">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Transaksi Hari Kemarin</h4>
+                            </div>
+                            <div class="card-body">
+                                {{ $count_before }} Transaksi
                             </div>
                         </div>
                     </div>
