@@ -142,22 +142,22 @@
                 <div class="col-lg-6 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Daily Report</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Monthly Report</h4>
+                            <h4>Trend Transaksi Bulanan</h4>
                         </div>
                         <div class="card-body">
                             <canvas id="myChart2"></canvas>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+                    {{-- <div class="card">
+                        <div class="card-header">
+                            <h4>Trend Transaksi Harian</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="row">
@@ -183,5 +183,50 @@
     <script src="{{ asset('js/page/index-0.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/modules-chartjs.js') }}"></script>
+
+    <script>
+        var ctx = document.getElementById("myChart2").getContext('2d');
+        var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [{
+            label: 'Total Penjualan ',
+            data: <?= json_encode($sales_monthly); ?>,
+            borderWidth: 2,
+            backgroundColor: '#6777ef',
+            borderColor: '#6777ef',
+            borderWidth: 2.5,
+            pointBackgroundColor: '#ffffff',
+            pointRadius: 4
+            }]
+        },
+        options: {
+            legend: {
+            display: false
+            },
+            scales: {
+            yAxes: [{
+                gridLines: {
+                drawBorder: false,
+                color: '#f2f2f2',
+                },
+                ticks: {
+                beginAtZero: true,
+                // stepSize: 150
+                }
+            }],
+            xAxes: [{
+                ticks: {
+                display: true
+                },
+                gridLines: {
+                display: false
+                }
+            }]
+            },
+        }
+        });
+    </script>
 @endpush
 

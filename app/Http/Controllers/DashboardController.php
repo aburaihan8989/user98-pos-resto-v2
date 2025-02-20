@@ -29,6 +29,13 @@ class DashboardController extends Controller
 
         $total_profit = $total_price - $total_cost;
 
+        $bulan = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+        $sales_monthly = [];
+
+        foreach ($bulan as $b) {
+            $sales_monthly[] = Order::whereDate('transaction_time','like','%'.date('Y').'-'.$b.'%')->sum('total_price');
+        }
+
         return view('pages.dashboard', [
             'total_sales'     => $total_sales,
             'total_count'     => $total_count,
@@ -37,7 +44,8 @@ class DashboardController extends Controller
             'sales_before'    => $sales_before,
             'count_before'    => $count_before,
             'total_cost'      => $total_cost,
-            'total_profit'    => $total_profit
+            'total_profit'    => $total_profit,
+            'sales_monthly'   => $sales_monthly
         ]);
     }
 }

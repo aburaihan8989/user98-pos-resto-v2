@@ -47,10 +47,10 @@ var ctx = document.getElementById("myChart2").getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     datasets: [{
-      label: 'Statistics',
-      data: [460, 458, 330, 502, 430, 610, 488],
+      label: 'Total Penjualan ',
+      data: [460, 458, 330, 502, 430, 610, 488, 100, 100, 100, 100, 100],
       borderWidth: 2,
       backgroundColor: '#6777ef',
       borderColor: '#6777ef',
@@ -87,43 +87,6 @@ var myChart = new Chart(ctx, {
 });
 
 var ctx = document.getElementById("myChart3").getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'doughnut',
-  data: {
-    datasets: [{
-      data: [
-        80,
-        50,
-        40,
-        30,
-        20,
-      ],
-      backgroundColor: [
-        '#191d21',
-        '#63ed7a',
-        '#ffa426',
-        '#fc544b',
-        '#6777ef',
-      ],
-      label: 'Dataset 1'
-    }],
-    labels: [
-      'Black',
-      'Green',
-      'Yellow',
-      'Red',
-      'Blue'
-    ],
-  },
-  options: {
-    responsive: true,
-    legend: {
-      position: 'bottom',
-    },
-  }
-});
-
-var ctx = document.getElementById("myChart4").getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'pie',
   data: {
