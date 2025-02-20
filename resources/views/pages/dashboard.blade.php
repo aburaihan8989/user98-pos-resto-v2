@@ -144,7 +144,7 @@
                         <div class="card-header">
                             <h4>Trend Transaksi Bulanan</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="height: 420px;">
                             <canvas id="myChart2"></canvas>
                         </div>
                     </div>
@@ -158,6 +158,43 @@
                             <canvas id="myChart"></canvas>
                         </div>
                     </div> --}}
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Top Sales Produk</h4>
+                        </div>
+                        <div class="card-body" style="height: 420px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Nama Produk</th>
+                                        <th scope="col">Terjual</th>
+                                        <th scope="col">Total Transaksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 1; ?>
+                                    @foreach ($top_sales as $item)
+                                        <tr>
+                                            <td>
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td>
+                                                {{ $item->name }}
+                                            </td>
+                                            <td>
+                                                {{ $item->count }} Pcs
+                                            </td>
+                                            <td>
+                                                Rp. {{ number_format(($item->total), 0, ",", ".") }}
+                                            </td>
+                                        </tr>
+                                        <?php $no++; ?>
+                                    @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
