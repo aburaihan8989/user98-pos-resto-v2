@@ -144,7 +144,7 @@
                         <div class="card-header">
                             <h4>Trend Transaksi Bulanan</h4>
                         </div>
-                        <div class="card-body" style="height: 420px;">
+                        <div class="card-body">
                             <canvas id="myChart2"></canvas>
                         </div>
                     </div>
@@ -162,37 +162,39 @@
                         <div class="card-header">
                             <h4>Top Sales Produk</h4>
                         </div>
-                        <div class="card-body" style="height: 420px;">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama Produk</th>
-                                        <th scope="col">Terjual</th>
-                                        <th scope="col">Total Transaksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 1; ?>
-                                    @foreach ($top_sales as $item)
+                        <div class="card-body" style="height: 405px;">
+                            <div class="table-responsive">
+                                <table class="table-striped table">
+                                    <thead>
                                         <tr>
-                                            <td>
-                                                {{ $loop->iteration }}
-                                            </td>
-                                            <td>
-                                                {{ $item->name }}
-                                            </td>
-                                            <td>
-                                                {{ $item->count }} Pcs
-                                            </td>
-                                            <td>
-                                                Rp. {{ number_format(($item->total), 0, ",", ".") }}
-                                            </td>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Produk</th>
+                                            <th scope="col">Terjual</th>
+                                            <th scope="col">Total Transaksi</th>
                                         </tr>
-                                        <?php $no++; ?>
-                                    @endforeach
-                            </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1; ?>
+                                        @foreach ($top_sales as $item)
+                                            <tr>
+                                                <td>
+                                                    {{ $loop->iteration }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->name }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->count }} Pcs
+                                                </td>
+                                                <td>
+                                                    Rp. {{ number_format(($item->total), 0, ",", ".") }}
+                                                </td>
+                                            </tr>
+                                            <?php $no++; ?>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
