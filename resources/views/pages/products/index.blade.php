@@ -111,7 +111,7 @@
                                                     {{ $product->stock }}
                                                 </td>
                                                 <td>
-                                                    @if ($product->stock == 0)
+                                                    @if ($product->stock <= 0)
                                                         <span class="badge badge-danger">Habis</span>
                                                     @elseif ($product->stock > 0 & $product->stock < $product->std_stock)
                                                         <span class="badge badge-warning">Kurang</span>
