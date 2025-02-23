@@ -104,18 +104,18 @@
                                 <label class="form-label">Category</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="category" value="produk-1" class="selectgroup-input"
-                                            @if ($product->category == 'produk-1') checked @endif>
+                                        <input type="radio" name="category" value="produk1" class="selectgroup-input"
+                                            @if ($product->category == 'produk1') checked @endif>
                                         <span class="selectgroup-button">Produk 1</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="category" value="produk-2" class="selectgroup-input"
-                                            @if ($product->category == 'produk-2') checked @endif>
+                                        <input type="radio" name="category" value="produk2" class="selectgroup-input"
+                                            @if ($product->category == 'produk2') checked @endif>
                                         <span class="selectgroup-button">Produk 2</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="category" value="produk-3" class="selectgroup-input"
-                                            @if ($product->category == 'produk-3') checked @endif>
+                                        <input type="radio" name="category" value="produk3" class="selectgroup-input"
+                                            @if ($product->category == 'produk3') checked @endif>
                                         <span class="selectgroup-button">Produk 3</span>
                                     </label>
                                 </div>
