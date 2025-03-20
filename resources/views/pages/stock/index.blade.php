@@ -54,7 +54,7 @@
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('stock.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search Name" name="transaction_time">
+                                            <input type="date" class="form-control" placeholder="Search Name" name="transaction_time">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
