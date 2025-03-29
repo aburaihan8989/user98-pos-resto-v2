@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'All Stocks')
+@section('title', 'All Stocks In')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,7 +11,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Stocks</h1>
+                <h1>Stocks In</h1>
                 <div class="section-header-button">
                     @if ( auth()->user()->roles == "admin" )
                         <a href="{{ route('stock.create') }}" class="btn btn-primary">Add Stock</a>
@@ -21,8 +21,8 @@
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="{{ route('stock.index') }}">Stocks</a></div>
-                    <div class="breadcrumb-item">All Stocks</div>
+                    <div class="breadcrumb-item"><a href="{{ route('stock.index') }}">Stocks In</a></div>
+                    <div class="breadcrumb-item">All Stocks In</div>
                 </div>
             </div>
             <div class="section-body">
@@ -31,16 +31,16 @@
                         @include('layouts.alert')
                     </div>
                 </div>
-                <h2 class="section-title">Stocks</h2>
+                <h2 class="section-title">Stocks In</h2>
                 <p class="section-lead">
-                    You can add all Stocks, view history stocks and more.
+                    You can add all Stocks In, view history stocks and more.
                 </p>
 
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>All Stocks</h4>
+                                <h4>All Stocks In</h4>
                             </div>
                             <div class="card-body">
                                 {{-- <div class="float-left">
@@ -73,7 +73,7 @@
                                             <th>Category</th>
                                             <th>Quantity</th>
                                             <th>Total Price</th>
-                                            <th>Action</th>
+                                            {{-- <th>Action</th> --}}
                                         </tr>
                                         <?php $no = 1; ?>
                                         @foreach ($products as $data)
@@ -115,14 +115,14 @@
                                                 {{-- <td>
                                                     {{ $product->created_at }}
                                                 </td> --}}
-                                                <td>
+                                                {{-- <td>
                                                     <div class="d-flex">
                                                         @if ( auth()->user()->roles == "admin" )
                                                             {{-- <a href='{{ route('product.edit', $product->id) }}'
                                                                 class="btn btn-sm btn-info btn-icon">
                                                                 <i class="fas fa-edit"></i>
                                                                 Edit
-                                                            </a> --}}
+                                                            </a>
                                                             <a href='#'
                                                                 class="btn btn-sm btn-secondary btn-icon">
                                                                 <i class="fas fa-edit"></i>
@@ -141,13 +141,13 @@
                                                             method="POST" class="ml-2"> --}}
                                                             {{-- <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" /> --}}
+                                                                value="{{ csrf_token() }}" />
                                                             <button class="btn btn-sm btn-secondary btn-icon confirm-delete ml-2">
                                                                 <i class="fas fa-times"></i> Delete
                                                             </button>
                                                         </form>
                                                     </div>
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                             <?php $no++; ?>
                                         @endforeach

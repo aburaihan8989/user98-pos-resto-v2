@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Stock Create')
+@section('title', 'Stock In Create')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -16,16 +16,16 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Create Stock</h1>
+                <h1>Create Stock In</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="{{ route('stock.index') }}">Stocks</a></div>
-                    <div class="breadcrumb-item">Create Stock</div>
+                    <div class="breadcrumb-item"><a href="{{ route('stock.index') }}">Stocks In</a></div>
+                    <div class="breadcrumb-item">Create Stock In</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Stock</h2>
+                <h2 class="section-title">Stock In</h2>
 
                 <div class="card">
                     <form action="{{ route('stock.store') }}" method="POST">

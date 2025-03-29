@@ -32,7 +32,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-industry"></i><span>Inventory</span></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="nav-link" href="{{ route('stock.index') }}">All Stock</a>
+                        <a class="nav-link" href="{{ route('stock.index') }}">Stock In</a>
                     </li>
 
                 </ul>
