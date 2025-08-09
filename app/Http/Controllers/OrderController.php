@@ -21,9 +21,35 @@ class OrderController extends Controller
         ->leftJoin('users', 'orders.kasir_id', '=', 'users.id')
         ->orderBy('transaction_time', 'desc')
         ->paginate(10);
-        //sort by transaction_time desc
 
-        return view('pages.orders.index', compact('orders'));
+        $total_price = DB::table('orders')
+        ->when($request->input('transaction_time'), function ($query, $transaction_time) {
+            return $query->where('transaction_time', 'like', '%' . $transaction_time . '%');
+        })
+        ->sum('total_price');
+
+        $total_tunai = DB::table('orders')
+        ->when($request->input('transaction_time'), function ($query, $transaction_time) {
+            return $query->where('transaction_time', 'like', '%' . $transaction_time . '%');
+        })
+        ->where('payment_method', 'Tunai')
+        ->sum('total_price');
+
+        $total_qris = DB::table('orders')
+        ->when($request->input('transaction_time'), function ($query, $transaction_time) {
+            return $query->where('transaction_time', 'like', '%' . $transaction_time . '%');
+        })
+        ->where('payment_method', 'QRIS')
+        ->sum('total_price');
+
+        $total_debit = DB::table('orders')
+        ->when($request->input('transaction_time'), function ($query, $transaction_time) {
+            return $query->where('transaction_time', 'like', '%' . $transaction_time . '%');
+        })
+        ->where('payment_method', 'Debit')
+        ->sum('total_price');
+
+        return view('pages.orders.index', compact('orders','total_price','total_tunai','total_qris','total_debit'));
     }
 
     //view

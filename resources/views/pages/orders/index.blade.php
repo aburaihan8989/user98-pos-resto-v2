@@ -29,6 +29,70 @@
                 <p class="section-lead">
                     You can view all Orders, such as transaction time, amount and more.
                 </p>
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="card card-statistic-1">
+                            <div class="card-icon bg-primary">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Total Penjualan</h4>
+                                </div>
+                                <div class="card-body">
+                                    Rp. {{ number_format($total_price, 0, ",", ".") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="card card-statistic-1">
+                            <div class="card-icon bg-primary">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Total Tunai</h4>
+                                </div>
+                                <div class="card-body">
+                                    Rp. {{ number_format($total_tunai, 0, ",", ".") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="card card-statistic-1">
+                            <div class="card-icon bg-primary">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Total QRIS</h4>
+                                </div>
+                                <div class="card-body">
+                                    Rp. {{ number_format($total_qris, 0, ",", ".") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="card card-statistic-1">
+                            <div class="card-icon bg-primary">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Total Debit</h4>
+                                </div>
+                                <div class="card-body">
+                                    Rp. {{ number_format($total_debit, 0, ",", ".") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row mt-4">
                     <div class="col-12">
@@ -38,12 +102,31 @@
                             </div>
                             <div class="card-body">
 
-                                <div class="float-right">
+                                <div class="float-left">
                                     <form method="GET" action="{{ route('order.index') }}">
                                         <div class="input-group">
-                                            <input type="date" class="form-control" placeholder="Search Date" name="transaction_time">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                            <div class="form-group">
+                                                <label>Pilih By Bulan : </label>
+                                                <div class="input-group">
+                                                    {{-- <input type="date" class="form-control" name="transaction_time" value="<?php echo date('Y-m-d');?>"> --}}
+                                                    <input type="month" class="form-control" style="width: 200px;" name="transaction_time">
+                                                    <button class="btn btn-primary mr-4"><i class="fas fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="float-left">
+                                    <form method="GET" action="{{ route('order.index') }}">
+                                        <div class="input-group">
+                                            <div class="form-group">
+                                                <label>Pilih By Tanggal : </label>
+                                                <div class="input-group">
+                                                    {{-- <input type="date" class="form-control" name="transaction_time" value="<?php echo date('Y-m-d');?>"> --}}
+                                                    <input type="date" class="form-control" style="width: 200px;" name="transaction_time">
+                                                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
